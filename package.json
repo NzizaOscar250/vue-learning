@@ -1,0 +1,11 @@
+{
+  "name": "vue-learning",
+  "version": "1.0.0",
+  "description": "I'm learning vueJs for now on",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
