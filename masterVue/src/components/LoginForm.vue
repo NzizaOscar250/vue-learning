@@ -2,7 +2,7 @@
 
     
 <div class="w-1/2 mx-auto max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-    <form class="space-y-6" action="#" @submit.prevent="Login">
+    <!-- <form class="space-y-6" action="#" @submit.prevent="Login">
         <h5 class="text-xl font-medium text-gray-900 dark:text-white">Sign in to our </h5>
         <div class="errors" v-if="errors.length > 0">
              <p v-for="x in errors" class="text-red-500 py-2">{{ x }}</p>
@@ -29,8 +29,22 @@
         <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
         </div>
-    </form>
+    </form> -->
 </div>
+
+<form method="post" @submit.prevent="Revision">
+    <label for="">First Name</label>
+   <input type="text" v-model="first_name" name="fname"/>
+    <label>Last Name</label>
+   <input type="text" v-model="last_name" name="lname"/>
+   <button type="submit" class="bg-blue-500 px-4 py-3 text-white">Revise</button>
+</form>
+
+
+<button class="px-3 py-2  w-16 rounded-md bg-blue-100"
+@click="changeColor"
+:class="color"
+>change me</button>
 
 </template>
 
@@ -43,12 +57,27 @@ export default{
             email:null,
             password:null,
             remember_me:false,
-            errors:[]
+            errors:[],
+            first_name:'',
+            last_name:'',
+            color:"",
+            initColor:100,
 
         }
     },
 
     methods:{
+        changeColor(){
+            this.initColor = this.initColor + 100
+            const color="bg-blue-"+this.initColor
+            this.color=color;
+            console.log(this.color)
+        },
+        Revision(){
+            const data={fname:this.first_name,lname:this.last_name}
+            console.log(data)
+        },
+
         Login(){
             this.errors = []
             if(!this.email){this.errors.push("Email is required")}
